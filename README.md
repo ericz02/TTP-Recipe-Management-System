@@ -1,5 +1,45 @@
 # Assignment: Building a Recipe Management System with Sequelize
 
+## Installation Guide
+
+### Cloning the repository
+
+```shell
+git clone https://github.com/ericz02/TTP-Recipe-Sequelize
+```
+
+### Install packages
+
+```shell
+npm i
+```
+
+### Setup .env file
+
+
+```js
+DB_USER=
+DB_HOST=localhost
+DB_NAME=
+DB_PASSWORD=
+DB_PORT=5432
+
+```
+
+### Start the app
+
+```shell
+npm run dev
+```
+
+## Available commands
+
+Running commands with npm `npm run [command]`
+
+| command         | description                              |
+| :-------------- | :--------------------------------------- |
+| `dev`           | Starts a development instance of the app |
+
 You will work on a project to build a recipe management system using Node.js, Express.js, and Sequelize. Your task is to implement the CRUD functionality and server-side data validation using Sequelize.
 
 Here are the specific requirements for your assignment:
