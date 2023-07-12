@@ -7,6 +7,35 @@ app.post("/recipes", async (req, res) => {
     res.status(201).json(newRecipe);
 
   } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: err.message });
+  }
+})
+
+// get all recipes
+app.get("/recipes", async (req, res) => {
+  try {
+    const allRecipe = await RecipeApplication.findAll();
+    res.status(200).json(allRecipe);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: err.message });
+  }
+})
+
+// get a specific recipe
+app.get("/recipes/:id", async (req, res) => {
+  const recipeId = parseInt(req.params.id, 10);
+  
+  try {
+    const recipe = await RecipeApplication.findOne({ where: { id: recipeId } });
+    
+    if (recipe) {
+      res.status(200).json(recipe);
+    } else {
+      res.status(404).send({ message: "Recipe not found." })
+    }
+  } catch (err) {
     console.error(err.message);
     res.status(500).json({ error: err.message });
   }
