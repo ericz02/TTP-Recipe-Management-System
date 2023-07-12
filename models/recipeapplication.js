@@ -1,9 +1,7 @@
-'use strict';
-const {
-  Model
-} = require('sequelize');
+"use strict";
+const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
-  class RecipeApplication extends Model {
+  class RecipeManagement extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -13,16 +11,49 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
     }
   }
-  RecipeApplication.init({
-    title: DataTypes.STRING,
-    description: DataTypes.TEXT,
-    ingredients: DataTypes.TEXT,
-    instructions: DataTypes.TEXT,
-    createdAt: DataTypes.DATE,
-    updatedAt: DataTypes.DATE
-  }, {
-    sequelize,
-    modelName: 'RecipeApplication',
-  });
-  return RecipeApplication;
+  RecipeManagement.init(
+    {
+      title: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          len: {
+            args: [3],
+            msg: "Title must be greater than 3 characters",
+          },
+        },
+      },
+      description: {
+        type: DataTypes.TEXT,
+        allowNull: false,
+        validate: {
+          len: [1, 500],
+          msg: "Description must be between 1 and 500 characters",
+        },
+      },
+      ingredients: {
+        type: DataTypes.TEXT,
+        allowNull: false,
+        validate: {
+          len: [1, 1000],
+        },
+      },
+      instructions: {
+        type: DataTypes.TEXT,
+        allowNull: false,
+        validate: {
+          len: [1, 5000],
+        },
+      },
+      createdAt: DataTypes.DATE,
+      updatedAt: DataTypes.DATE,
+    },
+    {
+      sequelize,
+      modelName: "RecipeApplication",
+      tableName: "recipe_applications",
+      underscored: true,
+    }
+  );
+  return RecipeManagement;
 };
