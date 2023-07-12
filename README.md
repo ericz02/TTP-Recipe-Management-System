@@ -19,17 +19,17 @@ npm i
 
 ```js
 DB_USER=
-DB_HOST=localhost
+DB_HOST=
 DB_NAME=
 DB_PASSWORD=
-DB_PORT=5432
+DB_PORT=
 
 ```
 
 ### Start the app
 
 ```shell
-npm run dev
+npm start
 ```
 
 ## Available commands
@@ -38,7 +38,11 @@ Running commands with npm `npm run [command]`
 
 | command         | description                              |
 | :-------------- | :--------------------------------------- |
-| `dev`           | Starts a development instance of the app |
+| `start`         | Starts a development instance of the app |
+
+<br>
+
+## Project Description
 
 You will work on a project to build a recipe management system using Node.js, Express.js, and Sequelize. Your task is to implement the CRUD functionality and server-side data validation using Sequelize.
 
